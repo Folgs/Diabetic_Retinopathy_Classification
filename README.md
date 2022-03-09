@@ -16,17 +16,17 @@ The main goal of this project was to understand and work with clinical images to
 * Study and work with the metadata. Include the tabular data in the models. 
 * Undertand what are the models doing by performing interpretability.
 
-#2. Data 
+# 2. Data 
 
 We have been able to work with a large, labeled dataset from the Catalan Health Department (CATSALUT). It consist of data corresponding to the usual screening in diabetic patients. For every patient we have data related to the disease as well as the retinal fundus images of both eye. The entire dataset consists of 99670 images and due to the nature of the screenings, it is highly imbalanced, with much more data in the non-retinophaty label.
 
-##2.1. Data description
+## 2.1. Data description
 ### 2.1.1 Images
 
 The dataset consists in eye fundus images of screenings from patients with diabetes. This images are labeled from 0 to 4 depending on the severity of diabetic retinopathy, with 0 meaning that the patient has no disease and 4 being the most severe class. Here are some examples of images in the dataset:
 
 <p align="center">
-  <img width="70%" src= "https://drive.google.com/uc?export=view&id=196PQSiAmh1P2v6r1Gv358vvWkJUGYXX9" />
+  <img width="70%" src= "Readme_Images/samples_eye_fundus.png" />
 </p>
 
 Data cleaning is done to delete from the dataset non-retinal fundus images and non-standard acquisition of the eye fundus.
@@ -132,8 +132,8 @@ The images have been preprocessed once and then saved, in order to lighten the t
 
 
 <p align="center">
-  <img width="40%" src= "https://drive.google.com/uc?export=view&id=1Q4XJeqxsNr7HpmrOfbMO0-V5wbv4inag" /> 
-  <img width="40%" src= "https://drive.google.com/uc?export=view&id=1xlvsVMHUXQMMk1Fi8-dU5dJv13-ytFgG" /> 
+  <img width="40%" src= "Readme_Images/Eye_not_prep.jpg" /> 
+  <img width="40%" src= "Readme_Images/Eye_Ben.jpg" /> 
 </p>
 
 First we worked without any preprocessing of the images, then with a black and white one instead of the Ben coloring, which showed some improvement and finally with this, the Ben Color with noticeable results.
@@ -208,10 +208,10 @@ The whole network is trained at the same time (fine-tuning) using Adam optimizer
 
 Cross entropy loss has been chosen as the loss function, as it is the most common approach for classification problems. The contributions to the loss of each class has been weighted to take care of class imbalance. In particular, we define
 <p align = "center">
-$w_i = \frac{n}{n_i}$
+  <img src="https://render.githubusercontent.com/render/math?math=w_i=\frac{n}{n_i}">
 </p>
 
-as the weight of class $i$, being $n_i$ the number of samples of class $i$ and $n$ the total number of samples.
+as the weight of class $$i$$, being $`n_i`$ the number of samples of class $`i`$ and $`n`$ the total number of samples.
 
 ### 4.2.3 Results
 
