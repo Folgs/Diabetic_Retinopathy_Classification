@@ -151,8 +151,7 @@ These transforms don’t modify the medical label of the image and give us suffi
 <p align="center">
   <img width="50%" src= "Readme_Images/transforms.png" />
   
-  
-# 3. Metrics and analysis of the results
+  # 3. Metrics and analysis of the results
 
 In this section we introduce the different metrics that are used during the experiments. 
 
@@ -164,7 +163,7 @@ In this section we introduce the different metrics that are used during the expe
 
 In the model of section 4.5 we also consider metrics like precision, recall and F1-score to study the hypotetical clinical relevance of the model.
   
-  # 4. Models
+# 4. Models
 
 ## 4.1. Binary classification
 
@@ -200,7 +199,7 @@ A ResNet-50 architecture pretrained on ImageNet was used. The latest layers of t
   
 ```
 
-Initially, a Binary Cross Entropy loss function was used and the standard Adam optimizer was selected for the training. However, we quickly observed that the dataset was still imbalanced towars the class 0. Thus, a loss function with the corresponding weights was used for the training.
+Initially, a Binary Cross Entropy loss function was used and the standard Adam optimizer was selected for the training. However, we quickly observed that the dataset was still imbalanced towars the class 0. Thus, a loss function with the corresponding weights was finally used for the training.
 
 Instead of the regular torch.argmax( ) used for multiclass classification, a threshold with respect to 0.5 was used to assign a label to each prediction.
 
@@ -219,6 +218,11 @@ The neural network was trained during 50 epochs with the following results:
   <img width="40%" src= "Readme_Images/conf_mat_cpu.png" /> 
 </p>
 
+The validation loss curve show us that the model learns until, more or less, epoch 30. Then, it gets stuck and the improvements in the training set doesn't generalize to the validation set.
+
+However, when we obvserve the confusion matrix, we expected better results for the binnary classification task. It is true that the network has learned something as the diagonal of the matrix is most prominent, but it is still far from a good classifier, specially in the medical domain.
+
+Thus, we didn't spend more time in this approach and decided to move on with other architectures to tackle it directly as a multi-classification problem.
 
 ## 4.2. Multiclass Classification Network
 
@@ -435,29 +439,3 @@ Finally, the feature importance was plotted, shown in the figure bellow. It is s
 
 <p align="center">
   <img width="50%" src= "Readme_Images/feature.jpg" />
-
-# 5. Interpretability
-
-Understanding why a model makes a certain prediction can be crucial in many applications, especially in the medical field. This is the reason why interpretability models are so important in deep learning.
-
-For our problem, we are using [Captum](https://captum.ai/), a library for model interpretability built on PyTorch. In particular, we will use Gradient SHAP, a model interpretability algorithm based on the following [paper](https://arxiv.org/abs/1705.07874).
-
-Given an input image, the algorithm estimates how relevant each pixel is for predicting the output class. This gives us a scalar number between 0 and 1 for each pixel in the image that can be plotted in a heat map.
-
-Some examples of eye fundus and their Gradient SHAP heat map are shown. We observe how the model considers relevant clinical information such as hemorrhages (red dots) or lipid deposition (white masses) to make the predictions.
-
-<p align="center">
-<img width="50%" src= "Readme_Images/interpretability1.png" />
-</p>
-
-<p align="center">
-<img width="50%" src= "Readme_Images/interpretability2.png" />
-</p>
-
-<p align="center">
-<img width="50%" src= "Readme_Images/interpretability3.png" />
-</p>
-
-
-
-
