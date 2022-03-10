@@ -174,7 +174,7 @@ In our first experiments we tried to classify images in 5 different classes usin
 This would aim to, if further in the path we still struggle with the multi-class classification, only use the cases where this binary classification outputs evidence of pathology for a classification of the severity of the lesion.
 
 <p align="center">
-  <img width="40%" src= "https://drive.google.com/uc?export=view&id=1l-hznoNOr91-EB1urCRTEXf9bzxKVTaA" />
+  <img width="40%" src= "Readme_Images/scheme Binary.png" />
 </p>
 
 ### 4.1.2. Experiment setup
@@ -210,8 +210,8 @@ In order to track the different results obtained when tuning the hyperparameters
 The neural network was trained during 50 epochs with the following results:
 
 <p align="center">
-  <img width="40%" src= "Readme_Images/binary_training_cpu.png" />
-  <img width="40%" src= "Readme_Images/binary_validation_cpu.png" /> 
+  <img width="100%" src= "Readme_Images/binary_training_cpu.png" />
+  <img width="100%" src= "Readme_Images/binary_validation_cpu.png" /> 
 </p>
 
 <p align="center">
