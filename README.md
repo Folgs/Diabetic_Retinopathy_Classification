@@ -439,3 +439,26 @@ Finally, the feature importance was plotted, shown in the figure bellow. It is s
 
 <p align="center">
   <img width="50%" src= "Readme_Images/feature.jpg" />
+
+ # 4. Interpretability
+
+Understanding why a model makes a certain prediction can be crucial in many applications, especially in the medical field. This is the reason why interpretability models are so important in deep learning.
+
+For our problem, we are using [Captum](https://captum.ai/), a library for model interpretability built on PyTorch. In particular, we will use Gradient SHAP, a model interpretability algorithm based on the following [paper](https://arxiv.org/abs/1705.07874).
+
+Given an input image, the algorithm estimates how relevant each pixel is for predicting the output class. This gives us a scalar number between 0 and 1 for each pixel in the image that can be plotted in a heat map.
+
+Some examples of eye fundus and their Gradient SHAP heat map are shown. We observe how the model considers relevant clinical information such as hemorrhages (red dots) or lipid deposition (white masses) to make the predictions.
+
+<p align="center">
+<img width="50%" src= "Readme_Images/interpretability1.png" />
+</p>
+
+<p align="center">
+<img width="50%" src= "Readme_Images/interpretability2.png" />
+</p>
+
+<p align="center">
+<img width="50%" src= "Readme_Images/interpretability3.png" />
+</p>
+ 
